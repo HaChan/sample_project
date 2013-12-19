@@ -14,6 +14,8 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
 
+  it { should respond_to(:remember_token) }
+
   it { should be_valid }
 
   describe "when name is not present" do
@@ -111,5 +113,13 @@ describe User do
     end
   end
 # password test end
+
+# test remember token
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
+
+# remember token test end
 
 end
