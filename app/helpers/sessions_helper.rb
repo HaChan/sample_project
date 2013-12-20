@@ -27,6 +27,7 @@ module SessionsHelper
   def sign_out
     self.current_user = nil
     cookies.delete(:remember_token)
+		session.delete(:return_to)
   end
 
   def redirect_back_or(default)
@@ -38,4 +39,12 @@ module SessionsHelper
     session[:return_to] = request.url if request.get?
   end
 
+	def signed_in_user
+		store_location
+    redirect_to signin_url, notice: "Please sign in." unless signed_in?
+  end
+
+	def get_feed
+		@feed_items ||= current_user.feed.paginate(page: params[:page])
+	end
 end
