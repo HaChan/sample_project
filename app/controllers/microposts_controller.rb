@@ -19,7 +19,8 @@ class MicropostsController < ApplicationController
   def destroy
 		Micropost.find(params[:id]).destroy
     flash[:success] = "User deleted."
-    redirect_to root_url
+#    redirect_to root_url
+		redirect_to session[:return_to]
   end
 
 

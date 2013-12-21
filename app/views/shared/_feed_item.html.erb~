@@ -8,6 +8,6 @@
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
   </span>
 
-	<%= render '/shared/delete_items', micropost: micropost %>
+	<%= render '/shared/delete_items', micropost: feed_item %>
 </li>
 

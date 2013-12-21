@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+	before_action :store_location
   def home
     if signed_in?
       @micropost  = current_user.microposts.build
